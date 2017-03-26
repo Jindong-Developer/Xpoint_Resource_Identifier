@@ -1,0 +1,229 @@
+<html xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xptr="http://www.rotorz.net/xml/2009/XPointer" xmlns:saxon="http://saxon.sf.net/" exclude-result-prefixes="xs xlink xptr saxon">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <titel>test xpointer() functions Implementation</titel>
+   </head>
+   <body>
+      <h1>------XPointer Schema Test Suite------</h1>
+      <h2 style="color: blue">1.start-point(x) Test</h2>
+      <h3>a.If x is of type range, the resulting point is the start point of the range.</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(start-point(cars/car[4]/brand)) </span></div>
+      <div>------theoretical output: M</div>
+      <div>------practical output: M</div><br><h3>b.If x is of type text, the container node of the resulting point is x and the index
+         is 0.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(start-point(cars/car[3]/brand/text())) </span></div>
+      <div>------theoretical output: B</div>
+      <div>------practical output: B</div><br><h3>c.If x is of type comment, the container node of the resulting point is x and the index
+         is 0.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(start-point(/cars/comment())) </span></div>
+      <div>------theoretical output: D</div>
+      <div>------practical output: D</div><br><h3>d.If x is of type processing instruction(), the container node of the resulting point
+         is x and the index is 0.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(start-point(//processing-instruction())) </span></div>
+      <div>------theoretical output: t</div>
+      <div>------practical output: t</div><br><h2 style="color: blue">2.end-point(x) Test</h2>
+      <h3>a.If x is of type range, the resulting point is the end point of the range.</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(end-point(end-point(cars/car[5]/brand))) </span></div>
+      <div>------theoretical output: s</div>
+      <div>------practical output: s</div><br><h3>b.If x is of type text, the container node of the resulting point is x and the index
+         is 0.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(end-point(cars/car[3]/brand/text())) </span></div>
+      <div>------theoretical output: d</div>
+      <div>------practical output: d</div><br><h3>c.If x is of type comment, the container node of the resulting point is x and the index
+         is 0.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(end-point(/cars/comment())) </span></div>
+      <div>------theoretical output: r</div>
+      <div>------practical output: r</div><br><h3>d.If x is of type processing instruction(), the container node of the resulting point
+         is x and the index is 0.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(end-point(/processing-instruction())) </span></div>
+      <div>------theoretical output: "</div>
+      <div>------practical output: "</div><br><h2 style="color: blue">3.range(x) test</h2>
+      <h3>a.If x is document root</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range(cars)) </span></div>
+      <div>------theoretical output: 
+         
+         
+         Audi
+         
+         
+         BMW
+         
+         
+         Borgward
+         
+         
+         Ford
+         
+         
+         Mercedes
+         
+         
+         Opel
+         
+         
+         Porsche
+         
+         
+         Volkswagen
+         Volkswagen is the top-selling and namesake marque of the Volkswagen Group
+         
+         
+         
+      </div>
+      <div>------practical output: 
+         
+         Audi
+         
+         
+         BMW
+         
+         
+         
+         Borgward
+         
+         
+         Ford
+         
+         
+         Mercedes
+         
+         
+         Opel
+         
+         
+         Porsche
+         
+         
+         Volkswagen
+         Volkswagen is the top-selling and namesake marque of the Volkswagen Group
+         
+         
+      </div><br><h3>b.If x is document element ,return entire element</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range(cars/car[5]/brand)) </span></div>
+      <div>------theoretical output: 
+         Mercedes
+         
+      </div>
+      <div>------practical output: Mercedes</div><br><h3>c.If x is document element ,return text node()</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range(cars/car[7]/brand/text())) </span></div>
+      <div>------theoretical output: 
+         Porsche
+         
+      </div>
+      <div>------practical output: Porsche</div><br><h3>d.If x is document element ,return comment</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range(cars/comment())) </span></div>
+      <div>------theoretical output: 
+         Mercedes
+         
+      </div>
+      <div>------practical output: </div><br><h2 style="color: blue">4.range-inside() test</h2>
+      <h3>a.If the arguemt is a Element with text inside, the function returns everything inside
+         the element,not including the element self.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range-inside(cars/car[4]/brand)) </span></div>
+      <div>------theoretical output: Ford</div>
+      <div>------practical output: Ford</div><br><h3>b.If the arguemt is a Element with element inside, the function returns everything inside
+         the element, which exclude the element self.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range-inside(cars/car[5])) </span></div>
+      <div>------theoretical output: Mercedes</div>
+      <div>------practical output: Mercedes</div><br><h3>c. If the arguemt is text, the function returns text self.</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range-inside(cars/car[1]/brand/text())) </span></div>
+      <div>------theoretical output: Audi</div>
+      <div>------practical output: </div><br><h3>d.  If the arguemt is comment, the function returns the comment. </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range-inside(cars/comment())) </span></div>
+      <div>------theoretical output: Das ist Kommentar</div>
+      <div>------practical output: </div><br><h3>e. If the arguemt is two elements side by side, the function returns a rang, which starts
+         form the start-point of the first element and ends to the end-point of the last element.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range-inside(cars/car[position()&amp;lt;3])) </span></div>
+      <div>------theoretical output: 
+         &lt;brand&gt;Audi&lt;/brand&gt;  &lt;/car&gt; &lt;car xml:id="car2"&gt;  &lt;brand&gt;BMW&lt;/brand&gt;  
+         
+      </div>
+      <div>------practical output: AudiBMW</div><br><h2 style="color: blue">5.range-to() Test</h2>
+      <h2 style="color: blue">6.string-range(location-set, string, number?, length?) Test</h2>
+      <h3>a.If there no start point and length arguments, all the matched strings  will be selected
+         from the first location to the end of the string(
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(string-range(cars/car/brand,'B')) </span></div>
+      <div>------theoretical output: BMWBorgward</div>
+      <div>------practical output: </div><br><h3>b.If there no length arguments, all the matched strings  will be selected from the first
+         location to the end of the string
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(string-range(cars/car/brand,'B',2)) </span></div>
+      <div>------theoretical output: MWorgward</div>
+      <div>------practical output: </div><br><h3>c.If alle the arguments are gicven, all the matched strings  will be selected from the
+         first location to the end of the string
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(string-range(cars/car/brand,'B',3,1)) </span></div>
+      <div>------theoretical output: Wr</div>
+      <div>------practical output: Wr</div><br><h3>d.If the matched string is letter, all the matched strings will be selected from the
+         first location with certain length.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(string-range(cars/car[6]/brand,'O',1,4)) </span></div>
+      <div>------theoretical output: Opel</div>
+      <div>------practical output: Opel</div><br><h3>e.If the matched string is a word, all the matched words will be selected from the first
+         location extending to a certain length.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(string-range(cars/car[8]/description,'is',1,6)) </span></div>
+      <div>------theoretical output: is the</div>
+      <div>------practical output: is the</div><br><h3>f. If the location-set is element, the value of the element as a location-set will be
+         matched.
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(string-range(cars/car[8]/description,'is',3,3)) </span></div>
+      <div>------theoretical output: the</div>
+      <div>------practical output: the</div><br><h2 style="color: blue">7.here() Test</h2>
+      <h3>a.here() function links to a existing element</h3>
+      <div> xpointer expression: <span style="color:red"> origin-test-re.xml#xpointer(/cars/car[6]) </span></div>
+      <div>------theoretical output:   Audi </div>
+      <div>------practical output: </div><br><h3>b.here() function links to a element that points a element in same document</h3>
+      <div> xpointer expression: <span style="color:red"> origin-test-re.xml#xpointer(/cars/car[8]) </span></div>
+      <div>------theoretical output:   Audi  </div>
+      <div>------practical output: </div><br><h3>c.here() function links to a element that points a element in other document</h3>
+      <div> xpointer expression: <span style="color:red"> origin-test-re.xml#xpointer(/cars/car[9]) </span></div>
+      <div>------theoretical output:  Porsche   </div>
+      <div>------practical output: </div><br><h2 style="color: blue">8.origin() Test</h2>
+      <h2 style="color: blue">9.xpointer() schema in XPointer framework</h2>
+      <h3>a.Shorthand XPointer</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#car6 </span></div>
+      <div>------theoretical output: Opel</div>
+      <div>------practical output: 
+         Opel
+         
+      </div><br><h3>b.many xpointer() schemes exist side by side</h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#xpointer(range(cars/car[2015]))xpointer(range(cars/car[1]))xpointer(range(cars/car[5])
+            </span></div>
+      <div>------theoretical output: 
+         
+         Audi
+         
+         
+      </div>
+      <div>------practical output: 
+         Audi
+         
+      </div><br><h3>c.xpointer() scheme, element() scheme, and xpath() scheme exist side by side, xpointer()
+         scheme at first place
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#element(id(car27))xpointer(range(cars/car[7])) </span></div>
+      <div>------theoretical output: BMW</div>
+      <div>------practical output: 
+         BMW
+         
+      </div><br><h3>d.xpointer() scheme, element() scheme, and xpath() scheme exist side by side, xpointer()
+         scheme at latter place
+      </h3>
+      <div> xpointer expression: <span style="color:red"> car_resource.xml#element(id(car27))xpointer(range(cars/car[7])) </span></div>
+      <div>------theoretical output: Porsche</div>
+      <div>------practical output: 
+         Porsche
+         
+      </div><br></body>
+</html>

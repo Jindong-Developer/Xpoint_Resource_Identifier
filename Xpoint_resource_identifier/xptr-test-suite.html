@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xptr="http://www.rotorz.net/xml/2009/XPointer"
+      xmlns:saxon="http://saxon.sf.net/"
+      exclude-result-prefixes="xs xlink xptr saxon">
+   <titel>test xpointer() functions Implementation</titel>
+   <content>
+      <div>
+         <h1>--XPointer Schema Test Suite(x stands for argument of the relevant function)--</h1>
+      </div>
+      <div/>
+      <h2>1.start-point(x) Test</h2>
+      <h3>1.If x is of type range, the resulting point is the start point of the range.</h3>
+      <div>----theoretocal output: F</div>
+      <div> ----practical output:  F</div>
+      <br/>
+      <h2>2.end-point(x) Test</h2>
+      <h3>1.end-point() of xpointer</h3>
+      <div>----theoretocal output: d</div>
+      <div> ----practical output:  d</div>
+      <br/>
+      <h2>3.</h2>
+      <h3>1.range() of xpointer</h3>
+      <div>----theoretocal output: 
+            
+                
+                    Audi
+                
+                
+                    BMW
+                
+                
+                    Borgward
+                
+                
+                    Ford
+                
+                
+                    Mercedes
+                
+                
+                    Opel
+                
+                
+                    Porsche
+                
+                
+                    Volkswagen
+                
+            
+        </div>
+      <div> ----practical output:  
+    
+        A2udi
+    
+    
+        BMW
+    
+    
+        Borgward
+    
+    
+        Ford
+    
+    
+        Mercedes
+    
+    
+        Opel
+    
+    
+        Porsche
+    
+    
+        Volkswagen
+     
+</div>
+      <br/>
+      <h2>4.</h2>
+      <h3>1.range-inside() of xpointer</h3>
+      <div>----theoretocal output: 
+            Mercedes
+        </div>
+      <div> ----practical output:  Mercedes</div>
+      <br/>
+      <h2>5.xpointer() schema in XPointer framework</h2>
+      <h3>1.three xpointer() schemes exist at same time</h3>
+      <div>----theoretocal output: 
+            
+                Volkswagen
+            
+        </div>
+      <div> ----practical output:  
+        Volkswagen
+    </div>
+      <br/>
+      <h3>2.Shorthand XPointer</h3>
+      <div>----theoretocal output: Opel</div>
+      <div> ----practical output:  
+        Opel
+    </div>
+      <br/>
+      <h3>3.xpointer() scheme, element() scheme, and xpath() scheme exist at same time</h3>
+      <div>----theoretocal output: Porsche</div>
+      <div> ----practical output:  
+        Porsche
+    </div>
+      <br/>
+   </content>
+</root>

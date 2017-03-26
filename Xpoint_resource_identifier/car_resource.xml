@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="testXSL.xsl"?>
+<!-- List of car elements with ID und child element name -->
+<cars xmlns:xlink="http://www.w3.org/1999/xlink" >
+    <car xml:id="car1">
+        <brand>Audi</brand>
+    </car>
+    <car xml:id="car2">
+        <brand>BMW</brand>
+    </car>
+    <!--Das ist Kommentar-->
+    <car xml:id="car3">
+        <brand>Borgward</brand>
+    </car>
+    <car xml:id="car4">
+        <brand>Ford</brand>
+    </car>
+    <car xml:id="car5">
+        <brand>Mercedes</brand>
+    </car>
+    <car xml:id="car6">
+        <brand>Opel</brand>
+    </car>
+    <car xml:id="car7">
+        <brand>Porsche</brand>
+    </car>
+    <car xml:id="car8">
+        <brand>Volkswagen</brand>
+        <description>Volkswagen is the top-selling and namesake marque of the Volkswagen Group</description>
+    </car> 
+</cars>

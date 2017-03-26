@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xptr-schema.xsl"?>
+<anchors xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--======================================================================-->
+    <!--test the implementation of function of xpointer() scheme based on XPointer framework-->
+    <!-- Reference:Steven DeRose,XPointer xpointer() Scheme,http://www.w3.org/TR/2002/WD-xptr-xpointer-20021219/ -->
+
+
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the start-point() function -->
+    <function>
+        <h2>start-point(x) Test</h2>
+
+        <!-- test the start-point(x) function  If the x is of type point, the resulting point is x.-->
+        <alink xlink:href="car_resource.xml#xpointer(start-point(start-point(cars/car[4]/brand)))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">F</alink>
+        <h3>If the x is of type point, the resulting point is x.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(start-point(cars/car[4]/brand))) ]]></expression>
+
+        <!-- If x is of type range, the resulting point is the start point of the range.-->
+        <alink xlink:href="car_resource.xml#xpointer(start-point(cars/car[5]/brand))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">M</alink>
+        <h3>If x is of type range, the resulting point is the start point of the range.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(cars/car[4]/brand)) ]]></expression>
+
+        <!-- If x is of type text, the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(start-point(cars/car[3]/brand/text()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">B</alink>
+        <h3>If x is of type text, the container node of the resulting point is x and the index is
+            0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(cars/car[3]/brand/text())) ]]></expression>
+
+        <!-- If x is of type comment, the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(start-point(/cars/comment()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">D</alink>
+        <h3>If x is of type comment, the container node of the resulting point is x and the index is
+            0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(/cars/comment())) ]]></expression>
+
+        <!-- If x is of type processing instruction(), the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(start-point(/processing-instruction()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">t</alink>
+        <h3>If x is of type processing instruction(), the container node of the resulting point is x
+            and the index is 0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(//processing-instruction())) ]]></expression>
+
+        <!-- If x is of type root, the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(start-point(/))" xlink:show="embed"
+            xlink:actuate="onLoad" xlink:type="simple">A</alink>
+        <h3>If x is of type root, the container node of the resulting point is x and the index is
+            0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(/))]]></expression>
+    </function>
+
+
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the end-point() function -->
+    <function>
+        <h2>end-point(x) Test</h2>
+
+        <!-- test the end-point(x) function  If the x is of type point, the resulting point is x.-->
+        <alink xlink:href="car_resource.xml#xpointer(end-point(end-point(cars/car[4]/brand)))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">d</alink>
+        <h3>If the x is of type point, the resulting point is x.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(end-point(end-point(cars/car[4]/brand))) ]]></expression>
+
+        <!-- If x is of type range, the resulting point is the end point of the range.-->
+        <alink xlink:href="car_resource.xml#xpointer(end-point(cars/car[5]/brand))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">s</alink>
+        <h3>If x is of type range, the resulting point is the end point of the range.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(end-point(end-point(cars/car[5]/brand))) ]]></expression>
+
+        <!-- If x is of type text, the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(end-point(cars/car[3]/brand/text()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">d</alink>
+        <h3>If x is of type text, the container node of the resulting point is x and the index is
+            0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(end-point(cars/car[3]/brand/text())) ]]></expression>
+
+        <!-- If x is of type comment, the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(end-point(/cars/comment()))" xlink:show="embed"
+            xlink:actuate="onLoad" xlink:type="simple">r</alink>
+        <h3>If x is of type comment, the container node of the resulting point is x and the index is
+            0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(end-point(/cars/comment())) ]]></expression>
+
+        <!-- If x is of type processing instruction(), the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(end-point(/processing-instruction()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">"</alink>
+        <h3>If x is of type processing instruction(), the container node of the resulting point is x
+            and the index is 0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(end-point(/processing-instruction())) ]]></expression>
+
+        <!-- If x is of type root, the container node of the resulting point is x and the index is 0.-->
+        <alink xlink:href="car_resource.xml#xpointer(end-point(/))" xlink:show="embed"
+            xlink:actuate="onLoad" xlink:type="simple">null</alink>
+        <h3>If x is of type root, the container node of the resulting point is x and the index is
+            0.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(end-point(/)) ]]></expression>
+    </function>
+
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the range() function -->
+    <function>
+        <h2>range(x) test</h2>
+
+        <!-- If x is document root ,return entire document-->
+        <alink xlink:href="car_resource.xml#xpointer(range(cars))" xlink:show="embed"
+            xlink:actuate="onLoad" xlink:type="simple">
+            <cars>
+                <car xml:id="car1">
+                    <brand>Audi</brand>
+                </car>
+                <car xml:id="car2">
+                    <brand>BMW</brand>
+                </car>
+                <car xml:id="car3">
+                    <brand>Borgward</brand>
+                </car>
+                <car xml:id="car4">
+                    <brand>Ford</brand>
+                </car>
+                <car xml:id="car5">
+                    <brand>Mercedes</brand>
+                </car>
+                <car xml:id="car6">
+                    <brand>Opel</brand>
+                </car>
+                <car xml:id="car7">
+                    <brand>Porsche</brand>
+                </car>
+                <car xml:id="car8">
+                    <brand>Volkswagen</brand>
+                    <description>Volkswagen is the top selling and namesake marque of the Volkswagen
+                        Group</description>
+                </car>
+            </cars>
+        </alink>
+        <h3>If x is document root</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(cars)) ]]></expression>
+
+        <!-- If x is element ,return entire element-->
+        <alink xlink:href="car_resource.xml#xpointer(range(cars/car[5]/brand))" xlink:show="embed"
+            xlink:actuate="onLoad" xlink:type="simple">
+            <brand>Mercedes</brand>
+        </alink>
+        <h3>If x is document element ,return entire element</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(cars/car[5]/brand)) ]]></expression>
+
+        <!-- If x is text ,return text node-->
+        <alink xlink:href="car_resource.xml#xpointer(range(cars/car[7]/brand/text()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"> Porsche</alink>
+        <h3>If x is document text ,return text node</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(cars/car[7]/brand/text())) ]]></expression>
+
+        <!-- If x is comment ,return comment node-->
+        <alink xlink:href="car_resource.xml#xpointer(range(cars/comment()))" xlink:show="embed"
+            xlink:actuate="onLoad" xlink:type="simple">
+            <brand>Mercedes</brand>
+        </alink>
+        <h3>If x is document element ,return comment</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(cars/comment())) ]]></expression>
+
+        <!--  If x is type of point ,return point self -->
+        <alink xlink:href="car_resource.xml#xpointer(range(end-point(cars/car[5]/brand)))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">M</alink>
+        <h3>If x is type of point ,return point self</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(end-point(cars/car[5]/brand))) ]]></expression>
+
+        <!--  If x includes two points ,return the two points. -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(range(end-point(cars/car[5]/brand)|start-point(cars/car[1])))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">sA</alink>
+        <h3>If x includes two points ,return the two points</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(end-point(cars/car[5]/brand)|start-point(cars/car[1]))) ]]></expression>
+
+        <!--  If x include one point and one range ,return the both. -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(range(end-point(cars/car[5]/brand)|cars/car[1]))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">s<car xml:id="car1">
+                <brand>Audi</brand>
+            </car></alink>
+        <h3> If x include one point and one range ,return the both.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(end-point(cars/car[5]/brand)|cars/car[1])) ]]></expression>
+
+    </function>
+
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the range-inside() function -->
+    <function>
+        <h2>range-inside() test</h2>
+
+        <!-- If the arguemt is text, the function returns text self.  -->
+        <alink xlink:href="car_resource.xml#xpointer(range-inside(cars/car[1]/brand/text()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Audi</alink>
+        <h3> If the arguemt is text, the function returns text self.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range-inside(cars/car[1]/brand/text())) ]]></expression>
+
+        <!-- If the arguemt is a Element with text inside, the function returns everything inside the element,not including the element self.  -->
+        <alink xlink:href="car_resource.xml#xpointer(range-inside(cars/car[4]/brand))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Ford</alink>
+        <h3>If the arguemt is a Element with text inside, the function returns everything inside the
+            element,not including the element self.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range-inside(cars/car[4]/brand)) ]]></expression>
+
+        <!-- If the arguemt is a Element with element inside, the function returns everything inside the element, which exclude the element self.  -->
+        <alink xlink:href="car_resource.xml#xpointer(range-inside(cars/car[5]))" xlink:show="embed"
+            xlink:actuate="onLoad" xlink:type="simple">
+            <brand>Mercedes</brand>
+        </alink>
+        <h3>If the arguemt is a Element with element inside, the function returns everything inside
+            the element, which exclude the element self.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range-inside(cars/car[5])) ]]></expression>
+
+        <!-- If the arguemt is comment, the function returns the comment.  -->
+        <alink xlink:href="car_resource.xml#xpointer(range-inside(cars/comment()))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Das ist Kommentar</alink>
+        <h3> If the arguemt is comment, the function returns the comment. </h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range-inside(cars/comment())) ]]></expression>
+
+        <!-- If the arguemt is a point, the function returns the point.  -->
+        <alink xlink:href="car_resource.xml#xpointer(range-inside(start-point(cars/car[2]/brand)))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">B</alink>
+        <h3>If the arguemt is a point, the function returns the point.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range-inside(start-point(cars/car[2]/brand))) ]]></expression>
+
+        <!-- If the arguemt is two elements side by side, the function returns a rang, which starts form the start-point of the first element and ends to the end-point of the last element.  -->
+        <alink xlink:href="car_resource.xml#xpointer(range-inside(cars/car[position()&lt;3]))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">
+            <![CDATA[<brand>Audi</brand>  </car> <car xml:id="car2">  <brand>BMW</brand>  ]]>
+        </alink>
+        <h3> If the arguemt is two elements side by side, the function returns a rang, which starts
+            form the start-point of the first element and ends to the end-point of the last
+            element.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range-inside(cars/car[position()&lt;3])) ]]></expression>
+    </function>
+
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the range-to() function -->
+    <function>
+        <h2>range-to() Test</h2>
+
+        <!-- The range-to() function starts form a element and ends to another element -->
+        <alink xlink:href="car_resource.xml#xpointer(//car[3]/brand/range-to(//car[4]/brand))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"
+            ><![CDATA[Borgward</brand> </car> <car xml:id="car4"> <brand>Ford]]></alink>
+        <h3>The range-to() function starts form a element and ends to another element</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(//car[3]/brand/range-to(//car[4]/brand)) ]]></expression>
+
+        <!-- The range-to() function starts form a element and ends to same element -->
+        <alink xlink:href="car_resource.xml#xpointer(//car[2]/brand/range-to(//car[2]/brand))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"
+            ><![CDATA[Borgward]]></alink>
+        <h3>The range-to() function starts form a element and ends to the same element</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(//car[2]/brand/range-to(//car[2]/brand)) ]]></expression>
+
+        <!-- The start point and the end point of two elements are used to adress the start- and end point in rang-to() function  -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(start-point(//car[1])/range-to(end-point(cars/car[2])))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"
+            ><![CDATA[<car xml:id="car1"> <brand>Audi</brand> </car>]]></alink>
+        <h3>The start point and the end point of two elements are used to adress the start- and end
+            point in rang-to() function </h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(//car[1])/range-to(end-point(cars/car[2]))) ]]></expression>
+
+        <!-- Yhe start point and the end point of the same element are used to adress the start- and end point in rang-to() function -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(start-point(//car[1])/range-to(end-point(cars/car[2])))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"
+            ><![CDATA[<car xml:id="car1"> <brand>Audi</brand> </car>]]></alink>
+        <h3>The start point and the end point of the same element are used to adress the start- and
+            end point in rang-to() function </h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(//car[1])/range-to(end-point(cars/car[2]))) ]]></expression>
+
+        <!-- The start point and the end point of a string are used to adress the start- and end point in rang-to() function -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(start-point(string-range(//car[1]/brand,''di'',1,2))/range-to(end-point(string-range(//car[2]/brand,''BM'',1,2))))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"
+            ><![CDATA[di</brand> </car> <car xml:id="car2"> <brand>BM]]></alink>
+        <h3>The start point and the end point of a string are used to adress the start- and end
+            point in rang-to() function</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(string-range(//car[1]/brand,''di'',1,2))/range-to(end-point(string-range(//car[2]/brand,''BM'',1,2)))) ]]></expression>
+
+        <!-- The rang-to() function starts from a point and ends to a range-->
+        <alink
+            xlink:href="car_resource.xml#xpointer(start-point(cars/car[1]/brand)/range-to(/cars/car[2]))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"
+            ><![CDATA[ Audi</brand> </car> <car xml:id="car2"> <brand>BMW<brand> ]]></alink>
+        <h3>The rang-to() function starts from a point and ends to a range</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(start-point(cars/car[1]/brand)/range-to(/cars/car[2])) ]]></expression>
+
+        <!-- The rang-to() function starts from a range and ends to a point-->
+        <alink
+            xlink:href="car_resource.xml#xpointer(cars/car[2])/range-to(start-point(cars/car[3]/brand)))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"
+            ><![CDATA[<brand>Audi</brand> </car> <car xml:id="car2"> <brand>BMW]]></alink>
+        <h3>The rang-to() function starts from a range and ends to a point</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(cars/car[2])/range-to(start-point(cars/car[3]/brand))) ]]></expression>
+    </function>
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the string-range(location-set, string, number?, length?) function -->
+    <function>
+        <h2>string-range(location-set, string, number?, length?) Test</h2>
+
+        <!-- If there no start point and length arguments, all the matched string  will be selected from the first location to the end of the string-->
+        <alink xlink:href="car_resource.xml#xpointer(string-range(cars/car/brand,'B'))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">BMWBorgward</alink>
+        <h3>If there no start point and length arguments, all the matched strings will be selected
+            from the first location to the end of the string(</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car/brand,'B')) ]]></expression>
+
+        <!-- If there no length arguments, all the matched string  will be selected from the first location to the end of the string-->
+        <alink xlink:href="car_resource.xml#xpointer(string-range(cars/car/brand,'B',2))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">MWorgward</alink>
+        <h3>If there no length arguments, all the matched strings will be selected from the first
+            location to the end of the string</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car/brand,'B',2)) ]]></expression>
+
+        <!-- If alle the arguments are gicven, all the matched string  will be selected from the first location to the end of the string-->
+        <alink xlink:href="car_resource.xml#xpointer(string-range(cars/car/brand,'B',3,1))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Wr</alink>
+        <h3>If alle the arguments are gicven, all the matched strings will be selected from the
+            first location to the end of the string</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car/brand,'B',3,1)) ]]></expression>
+
+        <!-- If alle the arguments are gicven, pradikate kann select a certain string from all the matched string.-->
+        <alink xlink:href="car_resource.xml#xpointer(string-range(cars/car/brand,'B',2,2)[2])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">r</alink>
+        <h3>If alle the arguments are gicven, pradikate kann select a certain string from all the
+            matched string.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car/brand,'B',3,1)[2]) ]]></expression>
+
+        <!-- If the matched string is whitespace, White space in a string is matched literally, with no normalization -->
+        <alink xlink:href="car_resource.xml#xpointer(string-range(cars/car[8]/description,' ',2,1))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">ittsanmotVG</alink>
+        <h3>If the matched string is whitespace, White space in a string is matched literally, with
+            no normalization</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car/brand,'B',3,1)) ]]></expression>
+
+        <!-- If the matched string is letter, all the matched strings will be selected from the first location with certain length. -->
+        <alink xlink:href="car_resource.xml#xpointer(string-range(cars/car[6]/brand,'O',1,4))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Opel</alink>
+        <h3>If the matched string is letter, all the matched strings will be selected from the first
+            location with certain length.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car[6]/brand,'O',1,4)) ]]></expression>
+
+        <!-- If the matched string is a word, all the matched words will be selected from the first location extending to a certain length. -->
+        <!--  -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(string-range(cars/car[8]/description,'is',1,6))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">is the</alink>
+        <h3>If the matched string is a word, all the matched words will be selected from the first
+            location extending to a certain length.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car[8]/description,'is',1,6)) ]]></expression>
+
+        <!-- If the matched string is a sentence, all the matched scentences will be selected from the first location extending to a certain length in a paragraph. -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(string-range(cars/car[8]/description,'Volkswagen is the top selling and namesake marque of the Volkswagen Group',1))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Volkswagen is the top
+            selling and namesake marque of the Volkswagen Group</alink>
+        <h3>If the matched string is a sentence, all the matched scentences will be selected from
+            the first location extending to a certain length in a paragraph.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car[8]/description,'is',1)) ]]></expression>
+
+        <!-- If the location-set is string text, the text will be matched directly. -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(string-range(string-range(cars/car[3]/brand,'B',1,2),'is',1,6))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Bo</alink>
+        <h3>If the location-set is string text, the text will be matched directly</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(string-range(cars/car[3]/brand,'B',1,2),'is',1,6)) ]]></expression>
+
+        <!-- If the location-set is element, the value of the element as a location-set will be matched. -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(string-range(cars/car[8]/description,'is',4,3))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">the</alink>
+        <h3> If the location-set is element, the value of the element as a location-set will be
+            matched.</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(string-range(cars/car[8]/description,'is',4,3)) ]]></expression>
+    </function>
+
+    
+    
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the here() Test function -->
+    <function>
+        <h2>here() Test</h2>
+        
+        
+        <!-- here() function links to a element -->
+        <alink      xlink:href="here-origin-test.xml#xpointer(/cars/car[6])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"><car xml:id="car7">  <brand>Audi</brand> </car></alink>
+        <h3>here() function links to a existing element</h3>
+        <expression><![CDATA[ here-origin-test.xml#xpointer(/cars/car[6]) ]]></expression>
+        
+        <!-- here() function links to a element that points a element in same document -->
+        <alink      xlink:href="here-origin-test.xml#xpointer(/cars/car[8])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"><car xml:id="car7">  <brand>Audi</brand> </car> </alink>
+        <h3>here() function links to a element that points a element in same document</h3>
+        <expression><![CDATA[ here-origin-test.xml#xpointer(/cars/car[8]) ]]></expression>
+        
+        <!-- here() function links to a element that points a element in other document -->
+        <alink      xlink:href="here-origin-test.xml#xpointer(/cars/car[9])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"><car xml:id="car7"> <brand>Porsche</brand> </car>  </alink>
+        <h3>here() function links to a element that points a element in other document</h3>
+        <expression><![CDATA[ here-origin-test.xml#xpointer(/cars/car[9]) ]]></expression>
+    </function>
+
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test the origin() Test function -->
+    <function>
+        <h2>origin() Test</h2>
+        
+        <!-- origin function links to a existing element -->
+        <alink      xlink:href="here-origin-test.xml#xpointer(/cars/car[1]/origin()/following-sibling::car[1])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"><brand>BMW</brand></alink>
+        <h3>origin function links to a existing element</h3>
+        <expression><![CDATA[ here-origin-test.xml#xpointer(/cars/car[1]/origin()/following-sibling::car[1]) ]]></expression>
+        
+        <!-- origin function links to ein empty element -->
+        <alink  xlink:href="here-origin-test.xml#xpointer(/cars/car[2]/origin()/following-sibling::car[1])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"> </alink>
+        <h3>origin function links to a empty element</h3>
+        <expression><![CDATA[ here-origin-test.xml#xpointer(/cars/car[2]/origin()/following-sibling::car[1]) ]]></expression>
+        
+        <!-- origin function links to a element that points to another element in the same document -->
+        <alink  xlink:href="here-origin-test.xml#xpointer(/cars/car[3]/origin()/following-sibling::car[1])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"><car xlink:type="locator" xlink:label="car1"> <brand>Audi</brand> </car></alink>
+        <h3>origin function links to ein element that points to another element in the same document</h3>
+        <expression><![CDATA[ here-origin-test.xml#xpointer(/cars/car[3]/origin()/following-sibling::car[1]) ]]></expression>
+        
+        <!-- origin function links to a element that points to another element in other document -->
+        <alink  xlink:href="here-origin-test.xml#xpointer(/cars/car[4]/origin()/following-sibling::car[1])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple"><car xml:id="car5">  <brand>Mercedes</brand> </car></alink>
+        <h3>origin function links to a element that points to another element in other document</h3>
+        <expression><![CDATA[ here-origin-test.xml#xpointer(/cars/car[4]/origin()/following-sibling::car[1]) ]]></expression>
+        
+    </function>
+
+
+    <!--======================================================================-->
+    <!--======================================================================-->
+    <!-- test xpointer() schema in XPointer framework -->
+    <function>
+        <h2>xpointer() schema in XPointer framework</h2>
+
+        <!-- Shorthand XPointer -->
+        <alink xlink:href="car_resource.xml#car6" xlink:show="embed" xlink:actuate="onLoad"
+            xlink:type="simple">Opel</alink>
+        <h3>Shorthand XPointer</h3>
+        <expression><![CDATA[ car_resource.xml#car6 ]]></expression>
+
+        <!-- many xpointer() schemes exist side by side -->
+        <alink
+            xlink:href="car_resource.xml#xpointer(range(cars/car[2015]))xpointer(range(cars/car[8]))xpointer(range(cars/car[5])"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">
+            <car xml:id="car8">
+                <brand>Volkswagen</brand>
+            </car>
+        </alink>
+        <h3>many xpointer() schemes exist side by side</h3>
+        <expression><![CDATA[ car_resource.xml#xpointer(range(cars/car[2015]))xpointer(range(cars/car[8]))xpointer(range(cars/car[5]) ]]></expression>
+
+        <!--xpointer() scheme, element() scheme, and xpath() scheme exist side by side, xpointer() scheme at first place -->
+        <alink xlink:href="car_resource.xml#xpointer(range(cars/car[2]))element(id(car27))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">BMW</alink>
+        <h3>xpointer() scheme, element() scheme, and xpath() scheme exist side by side, xpointer()
+            scheme at first place</h3>
+        <expression><![CDATA[ car_resource.xml#element(id(car27))xpointer(range(cars/car[7])) ]]></expression>
+
+        <!--xpointer() scheme, element() scheme, and xpath() scheme exist side by side, xpointer() scheme at latter place -->
+        <alink xlink:href="car_resource.xml#element(id(car27))xpointer(range(cars/car[7]))"
+            xlink:show="embed" xlink:actuate="onLoad" xlink:type="simple">Porsche</alink>
+        <h3>xpointer() scheme, element() scheme, and xpath() scheme exist side by side, xpointer()
+            scheme at latter place</h3>
+        <expression><![CDATA[ car_resource.xml#element(id(car27))xpointer(range(cars/car[7])) ]]></expression>
+    </function>
+
+</anchors>
