@@ -1,0 +1,2 @@
+# Xpoint
+Beschreibung: Das Projekt beschäftigt sich mit der Implementierung der Funktionalitäten des xpointer() Schemas auf Grundlage desXPointer Frameworks mittels XSLT 2.0. Zur Nutzung von XPointern in XML-Dateien bietet XSLT 2.0 eine einfache und plattformunabhängige Lösung. Somit liefert das Ergebnis des Projrkts eine Implementierung, die, falls nötig, erweiterbar ist. Meine Aufgabe: die xpointer()-Schema Spezifikation und deren Applikationen und Implementierung studieren, Test Files für die Implementierung schreiben und das Ergebnis präsentieren.
